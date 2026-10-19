@@ -2,270 +2,247 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<title>Oferta współpracy</title>
+<title>Propozycja współpracy</title>
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
   @page { size: A4; margin: 0; }
   :root {
-    --ink: #15213a;
-    --ink-2: #4a5568;
-    --muted: #8a93a3;
-    --line: #e4e1da;
-    --paper: #ffffff;
-    --soft: #f6f4ef;
-    --accent: #a8834b;
-    --accent-soft: #efe6d6;
-    --us: #15213a;
-    --them: #a8834b;
+    --paper: #f6f3ee;
+    --ink: #17150f;
+    --ink-2: #4d4a43;
+    --grey: #8b867c;
+    --rule: #d6d0c4;
+    --green: #1f3a30;
+    --green-ink: #eef0e9;
+    --serif: "Newsreader", Georgia, serif;
+    --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: var(--paper); }
   body {
-    font-family: "Inter", system-ui, sans-serif;
-    color: var(--ink);
-    font-size: 10.5pt;
-    line-height: 1.5;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    font-family: var(--sans); color: var(--ink);
+    font-size: 9.5pt; line-height: 1.5;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    font-feature-settings: "kern", "liga";
   }
   .page {
-    width: 210mm; height: 297mm;
-    padding: 18mm 18mm 16mm;
-    position: relative;
-    page-break-after: always;
-    overflow: hidden;
+    width: 210mm; height: 297mm; padding: 16mm 20mm 0;
+    position: relative; overflow: hidden; page-break-after: always;
   }
-  .p2 h2 { margin: 7mm 0 3.5mm; }
   .page:last-child { page-break-after: auto; }
 
-  .brand {
+  .run {
     display: flex; justify-content: space-between; align-items: baseline;
-    font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--muted);
-    padding-bottom: 5mm; border-bottom: 1px solid var(--line);
+    font-size: 8pt; color: var(--grey);
   }
-  .brand b { color: var(--ink); font-weight: 600; letter-spacing: .18em; }
-  .foot {
-    position: absolute; left: 18mm; right: 18mm; bottom: 10mm;
+  .run .mark { font-family: var(--serif); font-size: 11pt; color: var(--ink); letter-spacing: .01em; }
+  .run .mark i { font-style: italic; font-weight: 300; }
+  .folio {
+    position: absolute; left: 20mm; right: 20mm; bottom: 11mm;
     display: flex; justify-content: space-between;
-    font-size: 8pt; color: var(--muted);
+    font-size: 7.5pt; color: var(--grey);
+    border-top: .5pt solid var(--rule); padding-top: 3mm;
   }
 
-  h1 {
-    font-family: "Inter Display", "Inter", sans-serif;
-    font-size: 27pt; line-height: 1.12; font-weight: 600;
-    letter-spacing: -.015em; margin-top: 13mm; max-width: 150mm;
+  /* Okładkowa część strony 1 */
+  .title {
+    font-family: var(--serif); font-weight: 300;
+    font-size: 41pt; line-height: 1.04; letter-spacing: -.018em;
+    margin-top: 12mm; max-width: 158mm;
   }
-  h1 em { font-style: normal; color: var(--accent); }
-  .lead { font-size: 12pt; color: var(--ink-2); margin-top: 5mm; max-width: 150mm; }
-
-  h2 {
-    font-size: 8.5pt; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--accent); font-weight: 600; margin: 11mm 0 4mm;
+  .title i { font-style: italic; font-weight: 300; color: var(--green); }
+  .intro {
+    display: grid; grid-template-columns: 40mm 1fr; gap: 0 10mm;
+    margin-top: 10mm;
   }
-  h3 { font-size: 11pt; font-weight: 600; margin-bottom: 1.2mm; }
-  p { color: var(--ink-2); }
-
-  /* Funnel */
-  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.2mm; margin-top: 2mm; }
-  .step {
-    background: var(--soft); border-radius: 3mm; padding: 4mm 3.5mm 4.5mm;
-    position: relative; min-height: 33mm;
-  }
-  .step .n { font-size: 8pt; color: var(--muted); font-weight: 600; letter-spacing: .08em; }
-  .step h3 { font-size: 10pt; margin: 1.5mm 0 1mm; line-height: 1.25; }
-  .step p { font-size: 8.5pt; line-height: 1.4; }
-  .step.final { background: var(--accent-soft); }
-  .step.final .n { color: var(--accent); }
-  .brackets { display: grid; grid-template-columns: 4fr 1fr; gap: 2.2mm; margin-top: 2.5mm; }
-  .bracket {
-    border-top: 2px solid var(--us); padding-top: 1.8mm;
-    font-size: 8.5pt; font-weight: 600; color: var(--us);
-  }
-  .bracket.them { border-color: var(--them); color: var(--them); }
-
-  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; }
-  .cols3 > div { border-top: 1px solid var(--line); padding-top: 3.5mm; }
-  .cols3 p { font-size: 9.5pt; }
-
-  .quote {
-    margin-top: 11mm; padding: 6mm 7mm; border-left: 3px solid var(--accent);
-    background: var(--soft); border-radius: 0 3mm 3mm 0;
-    font-size: 11.5pt; color: var(--ink); line-height: 1.45;
+  .intro .meta { font-size: 8pt; color: var(--grey); line-height: 1.6; padding-top: 1mm; }
+  .intro .meta b { display: block; color: var(--ink); font-weight: 500; }
+  .intro p {
+    font-family: var(--serif); font-size: 13.5pt; line-height: 1.45;
+    color: var(--ink); font-weight: 400; max-width: 118mm;
   }
 
-  /* Page 2 */
-  .terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
-  .term { border: 1px solid var(--line); border-radius: 3mm; padding: 4.5mm 4.5mm 4mm; }
-  .term .big {
-    font-family: "Inter Display", "Inter", sans-serif;
-    font-size: 21pt; font-weight: 600; line-height: 1.1; letter-spacing: -.01em;
+  /* Sekcje */
+  .sec {
+    display: grid; grid-template-columns: 40mm 1fr; gap: 0 10mm;
+    border-top: .5pt solid var(--ink); padding-top: 4mm; margin-top: 10mm;
   }
-  .term .big small { font-size: 10pt; font-weight: 500; color: var(--ink-2); letter-spacing: 0; }
-  .term .lbl { font-size: 9pt; font-weight: 600; margin-top: 1.5mm; }
-  .term p { font-size: 8.5pt; margin-top: 1mm; line-height: 1.4; }
+  .sec.full { grid-template-columns: 1fr; }
+  .lab { font-size: 8.5pt; font-weight: 500; line-height: 1.35; }
+  .lab span { display: block; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 10pt; color: var(--grey); margin-bottom: .8mm; }
+  .sec.full .lab { margin-bottom: 5mm; display: flex; gap: 3mm; align-items: baseline; }
+  .sec.full .lab span { display: inline; margin: 0; }
 
-  .scen { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
-  .card { background: var(--soft); border-radius: 3mm; padding: 4mm 5mm; }
-  .card .tag { font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .card h3 { font-size: 12pt; margin: 1mm 0 3mm; }
-  table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
-  td { padding: 1.2mm 0; border-bottom: 1px solid var(--line); color: var(--ink-2); }
-  td:first-child { white-space: nowrap; padding-right: 3mm; }
-  td.v { text-align: right; color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  tr.total td { border-bottom: none; padding-top: 2.5mm; color: var(--ink); font-weight: 600; }
-  tr.total td.v { font-size: 13pt; color: var(--accent); }
+  /* Kafelki kroków */
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr) 1.08fr; border: .5pt solid var(--rule); }
+  .tile { padding: 4mm 4mm 5mm; border-right: .5pt solid var(--rule); min-height: 42mm; display: flex; flex-direction: column; }
+  .tile:last-child { border-right: none; }
+  .tile .no { font-family: var(--serif); font-weight: 300; font-size: 22pt; line-height: 1; color: var(--grey); margin-bottom: auto; padding-bottom: 8mm; }
+  .tile h4 { font-size: 9.5pt; font-weight: 600; line-height: 1.25; margin-bottom: 1.5mm; }
+  .tile p { font-size: 8.2pt; line-height: 1.42; color: var(--ink-2); }
+  .tile.theirs { background: var(--green); color: var(--green-ink); }
+  .tile.theirs .no { color: #9fb2a6; }
+  .tile.theirs p { color: #c9d3cb; }
+  .sides { display: grid; grid-template-columns: 4fr 1.08fr; margin-top: 2.5mm; font-size: 8pt; color: var(--ink-2); }
+  .sides div { border-left: .5pt solid var(--ink); padding-left: 2mm; line-height: 1.1; }
+  .sides div:last-child { border-color: var(--green); color: var(--green); font-weight: 500; }
 
-  .chart { margin-top: 5mm; }
-  .chart .row { display: grid; grid-template-columns: 30mm 1fr; align-items: center; gap: 3mm; margin-bottom: 2.6mm; }
-  .chart .name { font-size: 8.5pt; color: var(--ink-2); line-height: 1.25; }
-  .chart .name b { color: var(--ink); display: block; font-size: 9pt; }
-  .bar { display: flex; height: 8mm; border-radius: 1.5mm; overflow: hidden; }
-  .bar span {
-    display: flex; align-items: center; padding: 0 2.5mm;
-    font-size: 8pt; font-weight: 600; color: #fff; white-space: nowrap;
-    font-variant-numeric: tabular-nums;
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 9mm; }
+  .pair h4 { font-size: 9.5pt; font-weight: 600; margin-bottom: 1.2mm; }
+  .pair p { color: var(--ink-2); }
+
+  .closing {
+    margin-top: 11mm;
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: 15pt; line-height: 1.3; color: var(--ink);
   }
-  .bar .t { background: var(--them); }
-  .bar .u { background: var(--us); }
-  .legend { display: flex; gap: 6mm; font-size: 8pt; color: var(--ink-2); margin: 1mm 0 0 33mm; }
-  .legend i { display: inline-block; width: 3mm; height: 3mm; border-radius: .7mm; margin-right: 1.5mm; vertical-align: -.3mm; }
 
-  .note { font-size: 8pt; color: var(--muted); margin-top: 3mm; }
+  /* Strona 2 */
+  .terms { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .term { padding: 0 6mm; border-left: .5pt solid var(--rule); }
+  .term:first-child { padding-left: 0; border-left: none; }
+  .term .fig { font-family: var(--serif); font-weight: 300; font-size: 33pt; line-height: 1; letter-spacing: -.015em; white-space: nowrap; }
+  .term .fig small { font-size: 13pt; letter-spacing: 0; color: var(--ink-2); }
+  .term h4 { font-size: 9pt; font-weight: 600; margin: 3mm 0 1mm; }
+  .term p { font-size: 8.3pt; color: var(--ink-2); line-height: 1.45; }
 
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 9mm; }
-  ul.clean { list-style: none; }
-  ul.clean li { position: relative; padding-left: 5mm; margin-bottom: 2mm; font-size: 9.5pt; color: var(--ink-2); line-height: 1.4; }
-  ul.clean li::before { content: ""; position: absolute; left: 0; top: 1.9mm; width: 2mm; height: 2mm; border-radius: 50%; background: var(--accent); }
-  ul.clean li b { color: var(--ink); font-weight: 600; }
-  ol.steps { list-style: none; counter-reset: s; }
-  ol.steps li { counter-increment: s; position: relative; padding-left: 8mm; margin-bottom: 2.4mm; font-size: 9.5pt; color: var(--ink-2); line-height: 1.4; }
-  ol.steps li::before {
-    content: counter(s); position: absolute; left: 0; top: 0;
-    width: 5.2mm; height: 5.2mm; border-radius: 50%;
-    background: var(--ink); color: #fff; font-size: 7.5pt; font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-  }
-  ol.steps li b { color: var(--ink); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums lining-nums; }
+  th { font-weight: 500; font-size: 8pt; color: var(--grey); text-align: right; padding: 0 0 2mm; border-bottom: .5pt solid var(--ink); vertical-align: bottom; }
+  th:first-child { text-align: left; }
+  th b { display: block; color: var(--ink); font-size: 9.5pt; font-weight: 600; }
+  td { padding: 1.6mm 0; border-bottom: .5pt solid var(--rule); text-align: right; white-space: nowrap; }
+  td:first-child { text-align: left; color: var(--ink-2); }
+  td + td, th + th { width: 38mm; }
+  tr.sum td { border-bottom: .5pt solid var(--ink); padding: 3mm 0; font-family: var(--serif); font-size: 15pt; font-weight: 400; color: var(--green); }
+  tr.sum td:first-child { font-family: var(--sans); font-size: 9.5pt; font-weight: 600; color: var(--ink); }
+
+  .bars { margin-top: 5mm; display: grid; grid-template-columns: 26mm 1fr; gap: 2.2mm 4mm; align-items: center; font-size: 8pt; }
+  .bars .k { color: var(--ink-2); }
+  .bar { display: flex; height: 2.6mm; }
+  .bar .w { background: var(--green); }
+  .bar .n { background: var(--ink); }
+  .key { grid-column: 2; display: flex; gap: 6mm; color: var(--grey); font-size: 7.5pt; margin-top: .5mm; }
+  .key i { display: inline-block; width: 4mm; height: 1.6mm; margin-right: 1.5mm; vertical-align: .3mm; }
+  .fine { font-size: 7.5pt; color: var(--grey); margin-top: 4mm; line-height: 1.45; }
+
+  ol { list-style: none; counter-reset: n; }
+  ol li { counter-increment: n; display: grid; grid-template-columns: 6mm 1fr; padding: 1.8mm 0; border-bottom: .5pt solid var(--rule); color: var(--ink-2); font-size: 8.8pt; line-height: 1.42; }
+  ol li:first-child { padding-top: 0; }
+  ol li:last-child { border-bottom: none; }
+  ol li::before { content: counter(n); font-family: var(--serif); font-style: italic; color: var(--grey); font-size: 10pt; line-height: 1.3; }
+  ol li b { color: var(--ink); font-weight: 600; }
+
+  .sign { display: flex; gap: 10mm; margin-top: 5mm; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+  .cols .lab { margin-bottom: 4mm; display: flex; gap: 3mm; align-items: baseline; }
+  .cols .lab span { display: inline; margin: 0; }
+  .sign div { font-size: 8pt; color: var(--grey); line-height: 1.4; }
+  .sign b { display: block; font-family: var(--serif); font-weight: 400; font-size: 12pt; color: var(--ink); margin-bottom: .5mm; }
 </style>
 </head>
 <body>
 
-<!-- STRONA 1 -->
 <section class="page">
-  <div class="brand"><b>Zieliński &amp; Stypiński</b><span>Propozycja współpracy · dla Marcina</span></div>
+  <div class="run"><span class="mark">Zieliński <i>&amp;</i> Stypiński</span><span>Propozycja współpracy · październik 2026</span></div>
 
-  <h1>Wasi sprzedawcy robią to, w czym są najlepsi. <em>My dostarczamy im spotkania.</em></h1>
-  <p class="lead">Bierzemy na siebie cały lejek, od pierwszej reklamy do umówionej rozmowy. Do Waszego sprzedawcy trafia już tylko końcówka: zweryfikowana, podgrzana osoba, która przychodzi na spotkanie sprzedażowe.</p>
+  <h1 class="title">Spotkania sprzedażowe z&nbsp;kwalifikowanymi leadami <i>dla Waszych sprzedawców</i></h1>
 
-  <h2>Jak to działa</h2>
-  <div class="flow">
-    <div class="step"><div class="n">01</div><h3>Kampanie reklamowe</h3><p>Prowadzimy kampanie i pozyskujemy osoby zainteresowane Waszymi produktami.</p></div>
-    <div class="step"><div class="n">02</div><h3>Weryfikacja</h3><p>Odsiewamy przypadkowe zgłoszenia. Zostają tylko osoby, które pasują.</p></div>
-    <div class="step"><div class="n">03</div><h3>Kontakt i podgrzanie</h3><p>Rozmawiamy z każdym leadem, budujemy zainteresowanie i przygotowujemy go do rozmowy.</p></div>
-    <div class="step"><div class="n">04</div><h3>Umówione spotkanie</h3><p>Wpisujemy spotkanie w kalendarz sprzedawcy i dbamy, żeby lead się na nie stawił.</p></div>
-    <div class="step final"><div class="n">05</div><h3>Rozmowa i sprzedaż</h3><p>Wasz sprzedawca przeprowadza rozmowę i domyka sprzedaż.</p></div>
-  </div>
-  <div class="brackets">
-    <div class="bracket">Po naszej stronie</div>
-    <div class="bracket them">Po Waszej stronie</div>
+  <div class="intro">
+    <div class="meta"><b>Dla</b>Marcin<br><br><b>Od</b>Paweł Zieliński<br>Piotr Stypiński</div>
+    <p>Prowadzimy cały lejek, od reklamy do umówionej rozmowy. Do sprzedawcy trafia osoba, którą wcześniej zweryfikowaliśmy i&nbsp;przygotowaliśmy do spotkania. Rozliczamy się procentem od prowizji z&nbsp;domkniętych sprzedaży.</p>
   </div>
 
-  <h2>Co zyskujecie</h2>
-  <div class="cols3">
-    <div><h3>Czas tylko na sprzedaż</h3><p>Sprzedawca nie szuka klientów, nie dzwoni na zimno i nie goni ludzi. Siada do rozmów z osobami, które już wiedzą, po co przychodzą.</p></div>
-    <div><h3>Płacicie za wynik</h3><p>Nie ma abonamentu ani stałych opłat. Zarabiamy tylko wtedy, kiedy Wy zarabiacie, czyli na domkniętej sprzedaży.</p></div>
-    <div><h3>Łatwe skalowanie</h3><p>Zaczynamy od jednego sprzedawcy. Kiedy model się sprawdzi, dokładamy kolejnych i więcej spotkań.</p></div>
+  <div class="sec full">
+    <div class="lab"><span>01</span>Jak to działa</div>
+    <div>
+      <div class="strip">
+        <div class="tile"><div class="no">1</div><h4>Kampanie reklamowe</h4><p>Docieramy do osób zainteresowanych Waszymi produktami.</p></div>
+        <div class="tile"><div class="no">2</div><h4>Weryfikacja</h4><p>Odsiewamy przypadkowe zgłoszenia. Dalej idą tylko osoby, które pasują.</p></div>
+        <div class="tile"><div class="no">3</div><h4>Rozmowa i&nbsp;podgrzanie</h4><p>Kontaktujemy się z&nbsp;każdym leadem i&nbsp;przygotowujemy go do spotkania.</p></div>
+        <div class="tile"><div class="no">4</div><h4>Termin w&nbsp;kalendarzu</h4><p>Umawiamy spotkanie u&nbsp;sprzedawcy i&nbsp;pilnujemy, żeby się odbyło.</p></div>
+        <div class="tile theirs"><div class="no">5</div><h4>Spotkanie i&nbsp;sprzedaż</h4><p>Sprzedawca prowadzi rozmowę i&nbsp;domyka.</p></div>
+      </div>
+      <div class="sides"><div>Po naszej stronie</div><div>Po Waszej stronie</div></div>
+    </div>
   </div>
 
-  <div class="quote">Wasza jedyna inwestycja to budżet na kampanie reklamowe. Całą resztę, czyli pozyskanie, weryfikację, podgrzanie i umówienie spotkań, bierzemy na siebie.</div>
+  <div class="sec">
+    <div class="lab"><span>02</span>Co to zmienia</div>
+    <div class="pair">
+      <div><h4>Dla sprzedawcy</h4><p>Nie szuka klientów i&nbsp;nie dzwoni na zimno. Ma w&nbsp;kalendarzu rozmowy z&nbsp;ludźmi, którzy wiedzą, po co przychodzą, więc cały jego czas idzie na sprzedaż.</p></div>
+      <div><h4>Dla Was</h4><p>Nie płacicie abonamentu ani stałej opłaty. Zarabiamy tylko na domkniętej sprzedaży, a&nbsp;kiedy model się sprawdzi, dokładamy kolejnych sprzedawców.</p></div>
+    </div>
+  </div>
 
-  <div class="foot"><span>Zieliński &amp; Stypiński</span><span>1 / 2</span></div>
+  <p class="closing">Jedyna inwestycja po Waszej stronie to budżet na kampanie reklamowe.</p>
+
+  <div class="folio"><span>Zieliński &amp; Stypiński</span><span>1</span></div>
 </section>
 
-<!-- STRONA 2 -->
-<section class="page p2">
-  <div class="brand"><b>Zieliński &amp; Stypiński</b><span>Model współpracy i liczby</span></div>
+<section class="page">
+  <div class="run"><span class="mark">Zieliński <i>&amp;</i> Stypiński</span><span>Warunki i&nbsp;liczby</span></div>
 
-  <h2 style="margin-top:7mm">Warunki</h2>
-  <div class="terms">
-    <div class="term">
-      <div class="big">35%</div>
-      <div class="lbl">od wygenerowanej prowizji</div>
-      <p>Tylko z domkniętych sprzedaży. Przykład: przy 7 000 zł Waszej prowizji nasza część to 2 450 zł. Rozliczamy się raz w miesiącu.</p>
-    </div>
-    <div class="term">
-      <div class="big">do 4 000 <small>zł / mies.</small></div>
-      <div class="lbl">budżet reklamowy</div>
-      <p>Opłacany bezpośrednio z Waszego konta reklamowego. Pieniądze nie przechodzą przez nas, a Wy widzicie każdą wydaną złotówkę.</p>
-    </div>
-    <div class="term">
-      <div class="big">4 <small>tygodnie</small></div>
-      <div class="lbl">pilotaż z 1 sprzedawcą</div>
-      <p>4–5 spotkań z kwalifikowanymi leadami tygodniowo. O dołączeniu kolejnych sprzedawców możemy zdecydować już w trakcie.</p>
+  <div class="sec full" style="margin-top:8mm">
+    <div class="lab"><span>03</span>Warunki</div>
+    <div class="terms">
+      <div class="term"><div class="fig">35%</div><h4>od wygenerowanej prowizji</h4><p>Tylko z&nbsp;domkniętych sprzedaży. Przy 7&nbsp;000&nbsp;zł prowizji nasza część to 2&nbsp;450&nbsp;zł. Rozliczenie raz w&nbsp;miesiącu.</p></div>
+      <div class="term"><div class="fig">4&nbsp;000 <small>zł / mies.</small></div><h4>maksymalny budżet reklamowy</h4><p>Płacony bezpośrednio z&nbsp;Waszego konta reklamowego. Widzicie każdą wydaną złotówkę.</p></div>
+      <div class="term"><div class="fig">4 <small>tygodnie</small></div><h4>pilotaż z&nbsp;jednym sprzedawcą</h4><p>4–5 spotkań tygodniowo. O&nbsp;kolejnych sprzedawcach możemy zdecydować już w&nbsp;trakcie.</p></div>
     </div>
   </div>
 
-  <h2>Ile to może dać</h2>
-  <div class="scen">
-    <div class="card">
-      <div class="tag">Pilotaż · miesiąc</div>
-      <h3>1 sprzedawca</h3>
-      <table>
-        <tr><td>Spotkania (4–5 / tydz.)</td><td class="v">16–20</td></tr>
-        <tr><td>Sprzedaże (40%)</td><td class="v">6–8</td></tr>
-        <tr><td>Prowizja łącznie</td><td class="v">22 400–28 000 zł</td></tr>
-        <tr><td>Nasze 35%</td><td class="v">7 840–9 800 zł</td></tr>
-        <tr class="total"><td>Zostaje u Was</td><td class="v">14 560–18 200 zł</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <div class="tag">Po skalowaniu · miesiąc</div>
-      <h3>6 sprzedawców</h3>
-      <table>
-        <tr><td>Spotkania (30 / tydz.)</td><td class="v">120</td></tr>
-        <tr><td>Sprzedaże (40%)</td><td class="v">48</td></tr>
-        <tr><td>Prowizja łącznie</td><td class="v">168 000 zł</td></tr>
-        <tr><td>Nasze 35%</td><td class="v">58 800 zł</td></tr>
-        <tr class="total"><td>Zostaje u Was</td><td class="v">109 200 zł</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="chart">
-    <div class="row">
-      <div class="name"><b>1 sprzedawca</b>28 000 zł / mies.</div>
-      <div style="width:16.667%"><div class="bar"><span class="t" style="width:65%"></span><span class="u" style="width:35%"></span></div></div>
-    </div>
-    <div class="row">
-      <div class="name"><b>6 sprzedawców</b>168 000 zł / mies.</div>
-      <div class="bar"><span class="t" style="width:65%">109 200 zł dla Was</span><span class="u" style="width:35%">58 800 zł</span></div>
-    </div>
-    <div class="legend"><span><i style="background:var(--them)"></i>Zostaje u Was (65%)</span><span><i style="background:var(--us)"></i>Nasza część (35%)</span></div>
-  </div>
-  <p class="note">Wyliczenia poglądowe, liczone ostrożnie: 40% skuteczności domykania, średnia prowizja 3 500 zł z jednej sprzedaży, 4 tygodnie w miesiącu. Wariant „1 sprzedawca” na wykresie przy 5 spotkaniach tygodniowo.</p>
-
-  <div class="two" style="margin-top:7mm">
+  <div class="sec">
+    <div class="lab"><span>04</span>Przykładowe liczby<br><br><span style="font-size:8pt;font-family:var(--sans);font-style:normal;line-height:1.45">Liczone ostrożnie: 40% skuteczności, średnio 3&nbsp;500&nbsp;zł prowizji z&nbsp;jednej sprzedaży.</span></div>
     <div>
-      <h2 style="margin-top:0">Czego potrzebujemy od Was</h2>
-      <ul class="clean">
-        <li><b>Dostęp do kalendarza sprzedawcy</b>, żeby umawiać spotkania na konkretne terminy.</li>
-        <li><b>Podgląd leadów w CRM</b> razem z notatkami po spotkaniach. Dzięki temu wyciągamy wnioski i z tygodnia na tydzień podnosimy jakość leadów.</li>
-        <li><b>Konto reklamowe z budżetem</b> na kampanie.</li>
-        <li><b>Krótki brief o produktach</b> i o tym, kto jest dla Was idealnym klientem.</li>
-      </ul>
-    </div>
-    <div>
-      <h2 style="margin-top:0">Następne kroki</h2>
-      <ol class="steps">
-        <li><b>Krótki call startowy:</b> produkty, idealny klient, sprzedawca do pilotażu.</li>
-        <li><b>Podpięcie dostępów:</b> kalendarz, CRM, konto reklamowe.</li>
-        <li><b>Start kampanii</b> i pierwsze spotkania w kalendarzu sprzedawcy.</li>
-        <li><b>Podsumowanie pilotażu</b> i decyzja o kolejnych sprzedawcach.</li>
-      </ol>
+      <table>
+        <tr><th>Miesięcznie</th><th><b>Pilotaż</b>1 sprzedawca</th><th><b>Skala</b>6 sprzedawców</th></tr>
+        <tr><td>Spotkania tygodniowo</td><td>4–5</td><td>30</td></tr>
+        <tr><td>Spotkania w&nbsp;miesiącu</td><td>16–20</td><td>120</td></tr>
+        <tr><td>Sprzedaże</td><td>6–8</td><td>48</td></tr>
+        <tr><td>Prowizja łącznie</td><td>22&nbsp;400–28&nbsp;000&nbsp;zł</td><td>168&nbsp;000&nbsp;zł</td></tr>
+        <tr><td>Nasze 35%</td><td>7&nbsp;840–9&nbsp;800&nbsp;zł</td><td>58&nbsp;800&nbsp;zł</td></tr>
+        <tr class="sum"><td>Zostaje u&nbsp;Was</td><td>14&nbsp;560–18&nbsp;200&nbsp;zł</td><td>109&nbsp;200&nbsp;zł</td></tr>
+      </table>
+
+      <div class="bars">
+        <div class="k">1 sprzedawca</div>
+        <div><div class="bar" style="width:16.667%"><span class="w" style="width:65%"></span><span class="n" style="width:35%"></span></div></div>
+        <div class="k">6 sprzedawców</div>
+        <div class="bar"><span class="w" style="width:65%"></span><span class="n" style="width:35%"></span></div>
+        <div class="key"><span><i style="background:var(--green)"></i>zostaje u&nbsp;Was</span><span><i style="background:var(--ink)"></i>nasza część</span></div>
+      </div>
+      <p class="fine">Wykres pokazuje prowizję w&nbsp;miesiącu przy 5 spotkaniach tygodniowo na sprzedawcę: 28&nbsp;000&nbsp;zł dla jednego sprzedawcy, 168&nbsp;000&nbsp;zł dla sześciu.</p>
     </div>
   </div>
 
-  <div class="foot"><span>Paweł Zieliński · Piotr Stypiński</span><span>2 / 2</span></div>
+  <div class="sec full">
+    <div class="cols">
+      <div>
+        <div class="lab"><span>05</span>Czego potrzebujemy</div>
+        <ol>
+          <li><div><b>Dostęp do kalendarza sprzedawcy,</b> żeby umawiać spotkania na konkretne terminy.</div></li>
+          <li><div><b>Podgląd leadów w&nbsp;CRM z&nbsp;notatkami po spotkaniach.</b> Z&nbsp;notatek widzimy, które leady kupują, i&nbsp;na tej podstawie poprawiamy kampanie oraz kwalifikację.</div></li>
+          <li><div><b>Konto reklamowe z&nbsp;budżetem</b> na kampanie.</div></li>
+          <li><div><b>Krótki opis produktów</b> i&nbsp;tego, kto jest dla Was idealnym klientem.</div></li>
+        </ol>
+      </div>
+      <div>
+        <div class="lab"><span>06</span>Co dalej</div>
+        <ol>
+          <li><div><b>Krótki call startowy.</b> Produkty, idealny klient i&nbsp;wybór sprzedawcy do pilotażu.</div></li>
+          <li><div><b>Dostępy.</b> Kalendarz, CRM i&nbsp;konto reklamowe.</div></li>
+          <li><div><b>Start kampanii</b> i&nbsp;pierwsze spotkania w&nbsp;kalendarzu.</div></li>
+          <li><div><b>Podsumowanie pilotażu</b> i&nbsp;decyzja o&nbsp;kolejnych sprzedawcach.</div></li>
+        </ol>
+        <div class="sign">
+          <div><b>Paweł Zieliński</b>sprzedaż i&nbsp;kwalifikacja leadów</div>
+          <div><b>Piotr Stypiński</b>kampanie reklamowe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="folio"><span>Zieliński &amp; Stypiński</span><span>2</span></div>
 </section>
 
 </body>
